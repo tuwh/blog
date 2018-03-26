@@ -1,0 +1,799 @@
+@font-face {
+    font-family: "xheIcon";
+     src:
+     url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff'),
+    url("");
+}
+
+
+
+*:focus {
+    outline: none;
+}
+
+.xheIcon {
+    font-family: "xheIcon" !important;
+    font-size: 14px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.xheBtnEmot:before {
+    content: "\e8b0";
+}
+
+.xheBtnTable:before {
+    content: "\e8b1";
+}
+
+.xhe_fashion a.xheButton span.Code,
+.xhe_fashion a.xheButton span.ToMarkdown,
+.xhe_fashion a.xheButton span.CsdnFullScreen {
+    font-family: "xheIcon" !important;
+    font-size: 14px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.xhe_fashion a.xheButton span.Code:before {
+    content: "\e8b2";
+}
+
+.xheBtnLink:before {
+    content: "\e8b3";
+}
+
+.xheBtnImg:before {
+    content: "\e8b4";
+}
+
+.xheBtnSource:before {
+    content: "\e8b5";
+}
+
+.icon-duanladuiqi:before {
+    content: "\e8b6";
+}
+
+.xheBtnUnlink:before {
+    content: "\e8b7";
+}
+
+.icon-tianjia:before {
+    content: "\e8df";
+}
+
+.icon-fabu:before {
+    content: "\e8e0";
+}
+
+.icon-baocun:before {
+    content: "\e8e2";
+}
+
+.icon-lajitong:before {
+    content: "\e8e3";
+}
+
+.icon-guanbi:before {
+    content: "\e8e4";
+}
+
+.xheBtnBold:before {
+    content: "\e8b8";
+}
+
+.icon-juzhongduiqi:before {
+    content: "\e8b9";
+}
+
+.xhe_fashion a.xheButton span.ToMarkdown {
+    position: absolute;
+    right: 16px;
+    width: auto;
+    color: #4F4F4F !important;
+}
+
+.xhe_fashion a.xheButton span.ToMarkdown:after {
+    content: "Markdown";
+    margin-left: 10px;
+}
+
+.xhe_fashion a.xheButton span.ToMarkdown:before {
+    content: "\e8ba";
+}
+
+.xhe_fashion a.xheButton span.CsdnFullScreen:before {
+    content: "\e8bb";
+}
+
+.xheBtnStrikethrough:before {
+    content: "\e8bc";
+}
+
+.xheBtnIndent:before {
+    content: "\e8bd";
+}
+
+.xheBtnOutdent:before {
+    content: "\e8be";
+}
+
+.xheBtnList:before {
+    content: "\e8bf";
+}
+
+.xheBtnUnderline:before {
+    content: "\e8c0";
+}
+
+.xheBtnItalic:before {
+    content: "\e8c1";
+}
+
+.xheBtnBackColor:before {
+    content: "\e8c2";
+}
+
+.xheBtnAbout:before {
+    content: "\e8d4";
+}
+
+.icon-youxubiaoti:before {
+    content: "\e8c3";
+}
+
+.icon-youduiqi:before {
+    content: "\e8c4";
+}
+
+.xheBtnFontSize:before {
+    content: "\e8c5";
+}
+
+.xheBtnFontface:before {
+    content: "\e8c6";
+}
+
+.xheBtnFontColor:before {
+    content: "\e8c6";
+}
+
+.icon-ziti:before {
+    content: "\e8c7";
+}
+
+.xheBtnAlign:before {
+    content: "\e8c8";
+}
+
+.xheBtnBlocktag:before {
+    content: "\e8c9";
+}
+
+.icon-H1:before {
+    content: "\e8ca";
+}
+
+.icon-H2:before {
+    content: "\e8cb";
+}
+
+.icon-H3:before {
+    content: "\e8cc";
+}
+
+.icon-H4:before {
+    content: "\e8cd";
+}
+
+.icon-H5:before {
+    content: "\e8ce";
+}
+
+.xhe_fashion table,
+.xhe_fashion tr,
+.xhe_fashion td,
+.xhe_fashion iframe {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: center;
+    text-decoration: none;
+    font-weight: normal;
+    color: #000;
+    background: #fff;
+}
+
+.xhe_fashion table.xheLayout {
+    position: relative;
+    display: inline-table;
+    background: #FFF;
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 100%;
+}
+
+.xhe_fashion td.xheTool {
+    padding: 0px 3px;
+    background-color: #fafafa;
+}
+
+.xhe_fashion td.xheTool span {
+    float: left;
+    margin: 2px 0px;
+}
+
+.xhe_fashion td.xheTool br {
+    clear: left;
+}
+
+.xhe_fashion span.xheGStart {
+    display: none;
+}
+
+.xhe_fashion span.xheGEnd {
+    display: none;
+}
+
+.xhe_fashion span.xheSeparator {
+    display: block;
+    height: 14px;
+    width: 1px;
+    margin: 11px 1px !important;
+    background-color: #D0D0D0;
+}
+
+.xhe_fashion a.xheButton {
+    display: block;
+    margin: 2px;
+    border: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #4F4F4F;
+}
+
+.xhe_fashion a.xheEnabled span {
+    opacity: 1;
+    -ms-filter: 'alpha(opacity=100)';
+    filter: alpha(opacity=100);
+}
+
+.xhe_fashion a.xheEnabled:hover {
+    border-radius: 4px;
+    background: #4F4F4F;
+    color: #fff;
+}
+
+.xhe_fashion a.xheActive {
+    border-radius: 4px;
+    background: #4F4F4F;
+    color: #fff;
+}
+
+.xhe_fashion a.xheButton span {
+    display: block;
+    margin: 0px;
+    height: 28px;
+    width: 28px;
+    line-height: 28px;
+    text-align: center;
+    overflow: hidden;
+    float: unset;
+}
+
+
+/*.xhe_fashion span.xheIcon {
+    background: url(img/icons.gif) no-repeat 20px 20px
+}*/
+
+.xhe_fashion span.xheBtnCut {
+    background-position: 0 0;
+}
+
+.xhe_fashion span.xheBtnCopy {
+    background-position: -20px 0;
+}
+
+.xhe_fashion span.xheBtnPaste {
+    background-position: -40px 0;
+}
+
+.xhe_fashion span.xheBtnPastetext {
+    background-position: -60px 0;
+}
+
+.xhe_fashion span.xheBtnSelectAll {
+    background-position: -260px 0;
+}
+
+.xhe_fashion span.xheBtnRemoveformat {
+    background-position: -280px 0;
+}
+
+.xhe_fashion span.xheBtnAnchor {
+    background-position: -420px 0;
+}
+
+.xhe_fashion span.xheBtnFlash {
+    background-position: -460px 0;
+}
+
+.xhe_fashion span.xheBtnMedia {
+    background-position: -480px 0;
+}
+
+.xhe_fashion span.xheBtnHr {
+    background-position: -500px 0;
+}
+
+.xhe_fashion span.xheBtnPreview {
+    background-position: -580px 0;
+}
+
+.xhe_fashion span.xheBtnPrint {
+    background-position: -600px 0;
+}
+
+.xhe_fashion .xheIframeArea {
+    height: 100%;
+}
+
+.xhe_fashion iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#xheCntLine {
+    display: none;
+    position: absolute;
+    z-index: 1000001;
+    background: #fff;
+    height: 1px;
+    font-size: 0;
+}
+
+#xhePanel {
+    display: none;
+    position: absolute;
+    z-index: 1000000;
+    border: #999 1px solid;
+    background: #fff;
+    text-align: left;
+    margin-top: 5px;
+}
+
+#xheShadow {
+    display: none;
+    position: absolute;
+    z-index: 999999;
+    background: #000;
+    opacity: 0.2;
+    -ms-filter: 'alpha(opacity=20)';
+    filter: alpha(opacity=20);
+}
+
+.xheFixCancel {
+    position: absolute;
+    z-index: 999998;
+    background-color: #FFF;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    filter: alpha(opacity=0);
+}
+
+.xheMenu {
+    padding: 2px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 230px;
+}
+
+.xheMenu .xheMenuSeparator {
+    margin: 3px 0;
+    border-top: 1px solid #D8D8D8;
+}
+
+.xheMenu a {
+    display: block;
+    padding: 3px 20px 3px 3px;
+    line-height: normal;
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.xheMenu a:hover {
+    background: #e5e5e5;
+    text-decoration: none;
+    color: #000;
+}
+
+.xheMenu p,
+.xheMenu h1,
+.xheMenu h2,
+.xheMenu h3,
+.xheMenu h4,
+.xheMenu h5,
+.xheMenu h6,
+.xheMenu pre,
+.xheMenu address,
+.xheMenu div {
+    margin: 0;
+}
+
+.xheEmot div {
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.xheEmot div a {
+    display: inline-block;
+    margin: 3px;
+    padding: 3px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-decoration: none;
+}
+
+.xheEmot div a:hover {
+    border: 1px solid #999;
+    padding: 2px;
+}
+
+.xheEmot ul {
+    border-top: 1px solid #999;
+    list-style: none;
+    padding: 0 10px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.xheEmot li {
+    float: left;
+    margin: 0 2px 5px 0;
+}
+
+.xheEmot li a {
+    background: #fff;
+    display: block;
+    padding: 0 8px;
+    text-decoration: none;
+    color: #000;
+    line-height: 20px;
+}
+
+.xheEmot li a:hover {
+    text-decoration: underline;
+}
+
+.xheEmot li.cur {
+    border: 1px solid #999;
+    border-top: none;
+    position: relative;
+    bottom: 1px;
+}
+
+.xheEmot li.cur a {
+    cursor: text;
+    padding-top: 1px;
+}
+
+.xheEmot li.cur a:hover {
+    text-decoration: none;
+}
+
+.xheColor {
+    padding: 5px;
+}
+
+.xheColor a {
+    display: inline-block;
+    margin: 1px;
+    border: transparent 1px solid;
+    width: 14px;
+    height: 14px;
+    font-size: 0;
+    border-radius: 2px;
+}
+
+.xheColor a:hover {
+    border: #000 1px solid;
+}
+
+.xheColor a img {
+    display: none;
+}
+
+.xheDialog {
+    padding: 10px;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+.xheDialog a {
+    text-decoration: underline;
+    color: #00f;
+}
+
+.xheDialog a:hover {
+    text-decoration: underline;
+    color: #00f;
+}
+
+.xheDialog div {
+    padding: 2px 0;
+}
+
+.xheDialog input {
+    margin: 0;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 12px;
+    *border-width: expression((type!="checkbox")?'1px':0);
+    *padding: expression((type=="text")?'1px':'auto');
+    *width: expression((type=="text")?'160px':'auto');
+    *border-color: expression((type=="text")?'#ABADB3':'#fff #888 #888 #fff');
+    *background: expression((type=="button")?'#F0F0F0':'#FFFFFF');
+    *cursor: expression((type=="button")?'pointer':'');
+    *font-size: expression((type=="button")?'13px':'12px');
+}
+
+.xheDialog textarea {
+    font-size: 12px;
+    resize: none;
+    border: 1px solid #ccc;
+}
+
+.xheDialog input[type=text] {
+    padding: 1px;
+    width: 160px;
+    border-color: #ABADB3;
+}
+
+.xheDialog input[type=button] {
+    margin: 0;
+    border-color: #fff #888 #888 #fff;
+    background: #F0F0F0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.xheDialog input[type=file] {
+    font-size: 13px;
+}
+
+.xheDialog input[type=checkbox] {
+    border: 0;
+}
+
+.xheDialog select {
+    margin: 0;
+    border: 1px #ABADB3 solid;
+}
+
+.xheDialog input,
+.xheDialog select,
+.xheDialog textarea {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.xheDialog input:focus,
+.xheDialog select:focus,
+.xheDialog textarea:focus {
+    outline: 0;
+    border-color: #EEC068;
+    -webkit-box-shadow: 0 0 1px #EEC068;
+    -moz-box-shadow: 0 0 1px #EEC068;
+    box-shadow: 0 0 1px #EEC068;
+}
+
+.xheDialog .xheUpload {
+    position: relative;
+    display: inline-block;
+    width: 164px;
+}
+
+.xheDialog .xheUpload .xheBtn {
+    position: absolute;
+    top: 0px;
+    left: 114px;
+    width: 50px;
+    z-index: 1000001;
+    padding: 0;
+}
+
+.xheDialog .xheUpload .xheFile {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 164px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    filter: alpha(opacity=0);
+    z-index: 1000002;
+}
+
+.xheDialog .xheUpload .xheText {
+    position: absolute;
+    width: 107px;
+    top: 0px;
+    left: 0px;
+    z-index: 1000003;
+}
+
+.xheModal {
+    position: fixed;
+    z-index: 1000010;
+    text-align: left;
+    top: 50%;
+    left: 50%;
+    background: #FFF;
+    border: 1px solid #BBB;
+    font-size: 12px;
+    _position: absolute;
+    _margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin=document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+.xheModalTitle {
+    padding: 5px;
+    background: #F0F0EE;
+    border-bottom: 1px solid #BBB;
+}
+
+.xheModalClose {
+    float: right;
+    width: 16px;
+    height: 16px;
+    background: url(img/close.gif);
+    cursor: pointer;
+}
+
+.xheModalIfmWait {
+    width: 100%;
+    height: 100%;
+    background: url(img/waiting.gif) no-repeat 50% 50%;
+    margin: -16px 0 0 -16px;
+}
+
+.xheModalShadow {
+    position: fixed;
+    z-index: 1000009;
+    top: 50%;
+    left: 50%;
+    background: #000;
+    opacity: 0.2;
+    -ms-filter: 'alpha(opacity=20)';
+    filter: alpha(opacity=20);
+    _position: absolute;
+    _margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin=document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 5 + 'px');
+}
+
+.xheModalOverlay {
+    position: fixed;
+    z-index: 1000008;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.2;
+    -ms-filter: 'alpha(opacity=20)';
+    filter: alpha(opacity=20);
+    _position: absolute;
+    _height: expression(Math.max(document.documentElement.clientHeight, document.documentElement.scrollHeight)+'px');
+    _width: expression(Math.max(document.documentElement.clientWidth, document.documentElement.scrollWidth)+'px');
+}
+
+*html {
+    background-image: url(about:blank);
+    background-attachment: fixed;
+}
+
+.xheProgress {
+    position: relative;
+    width: 280px;
+    margin: auto;
+    border: 1px solid #C1C1C1;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: url(img/progressbg.gif) #E9E9E9;
+}
+
+.xheProgress span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 15px;
+    font-size: 12px;
+    color: #222;
+    text-shadow: 1px 1px 0 #eee;
+}
+
+.xheProgress div {
+    height: 15px;
+    width: 1px;
+    background: url(img/progress.gif) #31C135;
+}
+
+.xhe_Fullfix {
+    overflow: hidden;
+}
+
+.xhe_Fullfix body {
+    width: 100%;
+    height: 100%;
+}
+
+.xhe_Fullscreen {
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 100000;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    _position: absolute;
+    _top: expression((document.compatMode?documentElement.scrollTop:document.body.scrollTop)+'px');
+    _width: expression((document.compatMode?documentElement.offsetWidth:document.body.offsetWidth) + 'px');
+    _height: expression((document.compatMode?documentElement.offsetHeight:document.body.offsetHeight) + 'px');
+}
+
+.xheHideArea {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+    visibility: hidden;
+}
+
+/*
+.xhe_fashion a.xheButton span {
+    display: block;
+    margin: 0;
+    height: 28px;
+    width: 28px;
+    line-height: 28px;
+    text-align: center;
+    overflow: hidden;
+    float: unset;
+    font-size: 1rem;
+     color: #4F4F4F;
+     text-indent: 0;
+}*/
+
+.xheBtnRemoveformat:before {
+    content: "\e221";
+    font-family: Glyphicons Halflings !important;
+}
+
+.xhe_fashion a.xheButton span.xheBtnFullscreen:before {
+    content: "\e8bb";
+}
+
+.xhe_fashion span.xheBtnHr:before{
+    content: "\2212";
+    font-family: Glyphicons Halflings !important;
+}
+
+.xhe_fashion span.xheBtnPreview:before{
+    content: "\e164";
+    font-family: Glyphicons Halflings !important;
+}
+.xhe_fashion span.xheBtnPrint:before{
+    content: "\e045";
+    font-family: Glyphicons Halflings !important;
+}
+
+

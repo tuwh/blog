@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uncub.blog.dao.base.ServiceLogMapper">
+  <resultMap id="BaseResultMap" type="com.uncub.blog.dto.base.ServiceLog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.uncub.blog.dto.base.ServiceLog">
+    <result column="value" jdbcType="LONGVARBINARY" property="value" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, path
+  </sql>
+  <sql id="Blob_Column_List">
+    value
+  </sql>
+  <select id="queryServiceLogByConditions" parameterType="com.uncub.blog.condition.ServiceLogConditions" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_service_log
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectServiceLogById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_service_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteServiceLogById" parameterType="java.lang.Integer">
+    delete from t_service_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyProperty="id" parameterType="com.uncub.blog.dto.base.ServiceLog" useGeneratedKeys="true">
+    insert into t_service_log (id, path, value
+      )
+    values (#{id,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR}, #{value,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" keyProperty="id" parameterType="com.uncub.blog.dto.base.ServiceLog" useGeneratedKeys="true">
+    insert into t_service_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateServiceLogByIdSelective" parameterType="com.uncub.blog.dto.base.ServiceLog">
+    update t_service_log
+    <set>
+      <if test="path != null">
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.uncub.blog.dto.base.ServiceLog">
+    update t_service_log
+    set path = #{path,jdbcType=VARCHAR},
+      value = #{value,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateServiceLogById" parameterType="com.uncub.blog.dto.base.ServiceLog">
+    update t_service_log
+    set path = #{path,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="queryServiceLog" parameterType="com.uncub.blog.dto.base.ServiceLog" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_service_log
+    <trim prefix="where" suffixOverrides="and | or">
+      1 = 1 and
+      <if test="id != null ">
+        id =#{id} and
+      </if>
+      <if test="path != null and path != ''">
+        path =#{path} and
+      </if>
+      <if test="value != null ">
+        value =#{value} and
+      </if>
+    </trim>
+  </select>
+</mapper>

@@ -1,0 +1,272 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="syntaxhighlighter_3.0.83/styles/shCoreEclipse.css"/>
+    <link id="2" rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-browser.js"></script>
+    <script type="text/javascript" src="xheditor-1.2.2/xheditor-1.2.13-csdn.js"></script>
+    <script type="text/javascript" src="syntaxhighlighter_3.0.83/src/shCore.js"></script>
+    <script type="text/javascript" src="syntaxhighlighter_3.0.83/scripts/shBrushJava.js"></script>
+    <script src="clipboard/dist/clipboard.min.js"></script>
+    <script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/uncub.js"></script>
+
+</head>
+<body>
+
+<textarea id="elm5" name="elm5" class=""
+          rows="12" cols="80" style="width: 80%">
+</textarea>
+<script src="xheditor-1.2.2/pugin.js"></script>
+
+
+<!--class="brush: java; java-script: true;"-->
+<div>
+    <label>示例代码如下：</label>
+</div>
+<pre id="syntaxhighlighter" style="padding: 0;" class="brush: java;" type="syntaxhighlighter">
+<!--<pre id="syntaxhighlighter">-->
+package com.uncub.dao;
+
+import com.uncub.common.dao.Pagination;
+import com.uncub.condition.MenuConditions;
+import com.uncub.dto.Menu;
+import java.util.List;
+import org.mybatis.spring.annotation.MapperScan;
+
+@MapperScan
+public interface MenuMapper {
+    /**
+    * 根据主键进行删除
+    * @Param id
+    * @auth tuwh
+    */
+    int deleteMenuById(Integer id);
+
+    /**
+    * 根据主键进行新增,插入所有字段
+    * @Param menu
+    */
+    int insert(Menu menu);
+
+    /**
+    * 根据主键进行新增,插入非空字段
+    * @Param menu
+    */
+    int insertSelective(Menu menu);
+
+    /**
+    * 根据查询条件进行查找
+    * @Param menu
+    * @auth tuwh
+    */
+    List<Menu> queryMenuByConditions(MenuConditions menuConditions);
+
+    /**
+    * 根据主键进行查找
+    * @Param menu
+    * @auth tuwh
+    */
+    Menu selectMenuById(Integer id);
+
+    /**
+    * 根据主键进行更新，仅更新非主空字段
+    * @Param menu
+    */
+    int updateMenuByIdSelective(Menu menu);
+
+    /**
+    * 根据主键进行更新，更新所有字段
+    * @Param menu
+    */
+    int updateMenuById(Menu menu);
+
+    /**
+    * 根据所有不为空条件进行查询，分页。结果将传入@Param pagination 参数中
+    */
+    List<Menu> queryMenu(Menu menu, Pagination pagination);
+
+    /**
+    * 根据所有不为空条件进行查询，不分页
+    */
+    List<Menu> queryMenu(Menu menu);
+
+    /**
+    * 根据所有不为空条件进行查询，分页。结果将传入@Param pagination 参数中
+    */
+    List<Menu> queryMenuByConditions(MenuConditions menuConditions, Pagination pagination);
+}
+</pre>
+
+
+
+<script type="text/javascript">
+    $("#elm5").xheditor({
+        plugins: getCodePlugin(),
+        tools: 'Blocktag,Fontface,FontSize,Bold,Italic,Underline,Strikethrough,FontColor,BackColor,Removeformat,' +
+        'Align,List,Outdent,Indent,Link,Unlink,Img,Hr,Emot,Table,Source,Preview,Print,Fullscreen,Code,About',
+        skin: 'fashion'
+        /*        Cut,//                 剪切
+                Copy,//                 复制
+                Paste,//                 粘贴
+                Pastetext,//                 文本粘贴
+                Blocktag,//                 段落标签
+                Fontface,//                 字体
+                FontSize,//                 字体大小
+                Bold,//                 粗体
+                Italic,//                 斜体
+                Underline,//                 下划线
+                Strikethrough,//                 中划线
+                FontColor,//                 字体颜色
+                BackColor,//                 字体背景色
+                SelectAll,//                 全选
+                Removeformat,//                 删除文字格式
+                Align,//                 对齐
+                List,//                 列表
+                Outdent,//                 减少缩进
+                Indent,//                 增加缩进
+                Link,//                 超链接
+                Unlink,//                 删除链接
+                Anchor,//                 锚点
+                Img,//                 图片
+                Flash,//                 Flash动画
+                Media,//                 Windows media player视频
+                Hr,//                 插入水平线
+                Emot,//                 表情
+                Table,//                 表格
+                Source,//                 切换源代码模式
+                Preview,//                 预览当前代码
+                Print,//                 打印
+                Fullscreen,//                 切换全屏模式
+                About,//                 关于xhEditor*/
+    });
+
+    var html = $('#syntaxhighlighter').html();
+    var div = $.highlighterElem(html, 'java');
+    $('#syntaxhighlighter').empty().append(div);
+    // $('#syntaxhighlighter').html(colorCode);
+    // SyntaxHighlighter.all();
+
+
+    var toolbars = $("div[id^='highlighter_'].syntaxhighlighter>div.toolbar");
+    $.each(toolbars, function (toolbarIndex) {
+        var toolbarItems = $(toolbars[toolbarIndex]).find('.toolbar-item');
+        $.each(toolbarItems, function (itemIndex) {
+            /**
+             * 给展开代码按钮进行图标切换
+             */
+            if ($(toolbarItems[itemIndex]).hasClass('open-code')) {
+                var itemIcon = $(toolbarItems[itemIndex]).find("span.glyphicon")[0];
+                var itemDesc = $(toolbarItems[itemIndex]).find("span.item-desc")[0];
+                var highlighterDiv = $(toolbars[toolbarIndex]).parent("div[id^='highlighter_'].syntaxhighlighter")[0];
+                $(toolbarItems[itemIndex]).on('click',function(){
+                    if ($(highlighterDiv).hasClass('collapsed')){
+                        $(itemIcon).removeClass("glyphicon-plus").addClass("glyphicon-plus");
+                        $(itemDesc).html("收起代码");
+                        $(toolbarItems[itemIndex]).attr('title', '收起代码');
+                        $(highlighterDiv).removeClass('collapsed');
+                    }else{
+                        $(itemIcon).removeClass("glyphicon-minus").addClass("glyphicon-plus");
+                        $(itemDesc).html("展开代码");
+                        $(toolbarItems[itemIndex]).attr('title', '展开代码');
+                        $(highlighterDiv).addClass('collapsed');
+                    }
+                });
+            }
+            else if ($(toolbarItems[itemIndex]).hasClass('copy-source')) {
+                // main.js
+                var highlighterDiv = $(toolbars[toolbarIndex]).parent("div[id^='highlighter_'].syntaxhighlighter")[0];
+                var codeId = $(highlighterDiv).attr('id') + "_code";
+                var clipboard = new ClipboardJS($(toolbarItems[itemIndex]).get(0), {
+                    action: 'copy',
+                    text: function () {
+                        return $('#' + codeId).get(0).innerHTML;
+                    }
+                });
+
+                /*$(toolbarItems[itemIndex]).tooltip({
+                    title: '复制成功！',
+                    delay: {"show": 100, "hide": 500000},
+                    placement: 'top',
+                });*/
+                clipboard.on('success', function (e) {
+                    // $(toolbarItems[itemIndex]).popover('show');
+                })
+            }
+
+        });
+    })
+
+
+</script>
+
+<!--<a class="btn btn-success" style="margin: 50px" id="test">按钮</a>-->
+
+
+<!--<script type="text/javascript">
+
+
+    $('#test').tooltip({
+        title: '复制成功！',
+        // title: '成功！',
+        delay: {"show": 0, "hide": 50000},
+        placement: 'top'
+    });
+</script>-->
+
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+
+&lt;!&ndash; Modal &ndash;&gt;
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="thumbnail ">
+                    <img class="topic-picture-imag" src="pic/news1.png" alt="图片">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    成功
+</div>
+
+<div>
+    <button type="button" class="btn btn-primary " id="warn1">asdf</button>
+    <button type="button" class="btn btn-danger btn-lg" id="warn">asdf</button>
+</div>
+
+
+<script type="text/javascript">
+    // $('#myModal').dialog('show');
+    $('#warn').on('click', function () {
+        $(this).confirm({
+            title: '确认提交',
+            message:'确认提交？',
+            level:'success'
+        });
+    })
+    $('#warn1').on('click', function () {
+        $().success({
+            title: '确认提交',
+            message:'ceshi'
+        });
+    })
+
+    // $().dialog();
+
+</script>
+
+
+</body>
+</html>

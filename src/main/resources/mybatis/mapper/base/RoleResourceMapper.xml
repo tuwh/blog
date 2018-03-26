@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uncub.blog.dao.base.RoleResourceMapper">
+  <resultMap id="BaseResultMap" type="com.uncub.blog.dto.base.RoleResource">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="resource_id" jdbcType="INTEGER" property="resourceId" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, role_id, resource_id, status, permission
+  </sql>
+  <select id="queryRoleResourceByConditions" parameterType="com.uncub.blog.condition.RoleResourceConditions" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_role_resource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectRoleResourceById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_role_resource
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteRoleResourceById" parameterType="java.lang.Integer">
+    delete from t_role_resource
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyProperty="id" parameterType="com.uncub.blog.dto.base.RoleResource" useGeneratedKeys="true">
+    insert into t_role_resource (id, role_id, resource_id, 
+      status, permission)
+    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{resourceId,jdbcType=INTEGER}, 
+      #{status,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyProperty="id" parameterType="com.uncub.blog.dto.base.RoleResource" useGeneratedKeys="true">
+    insert into t_role_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateRoleResourceByIdSelective" parameterType="com.uncub.blog.dto.base.RoleResource">
+    update t_role_resource
+    <set>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null">
+        resource_id = #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateRoleResourceById" parameterType="com.uncub.blog.dto.base.RoleResource">
+    update t_role_resource
+    set role_id = #{roleId,jdbcType=INTEGER},
+      resource_id = #{resourceId,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      permission = #{permission,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="queryRoleResource" parameterType="com.uncub.blog.dto.base.RoleResource" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_role_resource
+    <trim prefix="where" suffixOverrides="and | or">
+      1 = 1 and
+      <if test="id != null ">
+        id =#{id} and
+      </if>
+      <if test="roleId != null ">
+        role_id =#{roleId} and
+      </if>
+      <if test="resourceId != null ">
+        resource_id =#{resourceId} and
+      </if>
+      <if test="status != null and status != ''">
+        status =#{status} and
+      </if>
+      <if test="permission != null and permission != ''">
+        permission =#{permission} and
+      </if>
+    </trim>
+  </select>
+</mapper>

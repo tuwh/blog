@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uncub.blog.dao.base.UserMapper">
+  <resultMap id="BaseResultMap" type="com.uncub.blog.dto.base.User">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USER_NO" jdbcType="VARCHAR" property="userNo" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="SALT" jdbcType="VARCHAR" property="salt" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="PHONE_NO" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="CREATE_TM" jdbcType="VARCHAR" property="createTm" />
+    <result column="CREATE_DT" jdbcType="VARCHAR" property="createDt" />
+    <result column="UPDATE_DT" jdbcType="VARCHAR" property="updateDt" />
+    <result column="UPDATE_TM" jdbcType="VARCHAR" property="updateTm" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, USER_NO, USER_NAME, PASSWORD, SALT, STATUS, EMAIL, PHONE_NO, CREATE_TM, CREATE_DT, 
+    UPDATE_DT, UPDATE_TM
+  </sql>
+  <select id="queryUserByConditions" parameterType="com.uncub.blog.condition.UserConditions" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteUserById" parameterType="java.lang.Integer">
+    delete from t_user
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyProperty="id" parameterType="com.uncub.blog.dto.base.User" useGeneratedKeys="true">
+    insert into t_user (ID, USER_NO, USER_NAME, 
+      PASSWORD, SALT, STATUS, 
+      EMAIL, PHONE_NO, CREATE_TM, 
+      CREATE_DT, UPDATE_DT, UPDATE_TM
+      )
+    values (#{id,jdbcType=INTEGER}, #{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phoneNo,jdbcType=VARCHAR}, #{createTm,jdbcType=VARCHAR}, 
+      #{createDt,jdbcType=VARCHAR}, #{updateDt,jdbcType=VARCHAR}, #{updateTm,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyProperty="id" parameterType="com.uncub.blog.dto.base.User" useGeneratedKeys="true">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userNo != null">
+        USER_NO,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="salt != null">
+        SALT,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="phoneNo != null">
+        PHONE_NO,
+      </if>
+      <if test="createTm != null">
+        CREATE_TM,
+      </if>
+      <if test="createDt != null">
+        CREATE_DT,
+      </if>
+      <if test="updateDt != null">
+        UPDATE_DT,
+      </if>
+      <if test="updateTm != null">
+        UPDATE_TM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTm != null">
+        #{createTm,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null">
+        #{createDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDt != null">
+        #{updateDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTm != null">
+        #{updateTm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateUserByIdSelective" parameterType="com.uncub.blog.dto.base.User">
+    update t_user
+    <set>
+      <if test="userNo != null">
+        USER_NO = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        SALT = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        PHONE_NO = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTm != null">
+        CREATE_TM = #{createTm,jdbcType=VARCHAR},
+      </if>
+      <if test="createDt != null">
+        CREATE_DT = #{createDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDt != null">
+        UPDATE_DT = #{updateDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTm != null">
+        UPDATE_TM = #{updateTm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateUserById" parameterType="com.uncub.blog.dto.base.User">
+    update t_user
+    set USER_NO = #{userNo,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      SALT = #{salt,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      PHONE_NO = #{phoneNo,jdbcType=VARCHAR},
+      CREATE_TM = #{createTm,jdbcType=VARCHAR},
+      CREATE_DT = #{createDt,jdbcType=VARCHAR},
+      UPDATE_DT = #{updateDt,jdbcType=VARCHAR},
+      UPDATE_TM = #{updateTm,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="queryUser" parameterType="com.uncub.blog.dto.base.User" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    <trim prefix="where" suffixOverrides="and | or">
+      1 = 1 and
+      <if test="id != null ">
+        ID =#{id} and
+      </if>
+      <if test="userNo != null and userNo != ''">
+        USER_NO =#{userNo} and
+      </if>
+      <if test="userName != null and userName != ''">
+        USER_NAME =#{userName} and
+      </if>
+      <if test="password != null and password != ''">
+        PASSWORD =#{password} and
+      </if>
+      <if test="salt != null and salt != ''">
+        SALT =#{salt} and
+      </if>
+      <if test="status != null and status != ''">
+        STATUS =#{status} and
+      </if>
+      <if test="email != null and email != ''">
+        EMAIL =#{email} and
+      </if>
+      <if test="phoneNo != null and phoneNo != ''">
+        PHONE_NO =#{phoneNo} and
+      </if>
+      <if test="createTm != null and createTm != ''">
+        CREATE_TM =#{createTm} and
+      </if>
+      <if test="createDt != null and createDt != ''">
+        CREATE_DT =#{createDt} and
+      </if>
+      <if test="updateDt != null and updateDt != ''">
+        UPDATE_DT =#{updateDt} and
+      </if>
+      <if test="updateTm != null and updateTm != ''">
+        UPDATE_TM =#{updateTm} and
+      </if>
+    </trim>
+  </select>
+</mapper>

@@ -1,0 +1,169 @@
+body {
+    background-color: #EAEAE9;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list-group-item > a:focus, .list-group-item > a:hover {
+    color: rgb(227, 40, 31);
+    text-decoration: none;
+}
+
+.list-group-item > a {
+    color: rgb(5, 1, 1);
+}
+
+.topic-head {
+    border-left-color: #1b809e;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    font-size: 16px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.content_topics {
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.topic-red {
+    border-left-color: #e33f27;
+}
+
+.topic-content {
+    border: none;
+}
+
+.topic-picture-warp {
+    padding: 0px;
+    margin-bottom: 0px;
+    height: 100%;
+    line-height: unset;
+}
+
+.topic-picture-warp1 {
+    height: 100%;
+    line-height: unset;
+
+}
+
+.topic-picture-imag {
+    height: 100% !important;
+    max-height: 50px;
+    min-height: 50px;
+}
+
+/**, ::after, ::before {
+    box-sizing: border-box;
+}*/
+
+div.syntaxhighlighter{
+    margin: 0px!important;
+    min-height: 20px!important;
+}
+.syntaxhighlighter div.row{
+    height:auto!important;
+}
+
+.syntaxhighlighter .toolbar .row .col-md-1{
+    width: 8.33333333%!important;
+    position:relative!important;
+    float:left!important;
+    margin: auto!important;
+}
+
+.syntaxhighlighter .row::before{
+    display:none;
+}
+
+.syntaxhighlighter .row::after{
+    display:none;
+}
+
+/*解决工具栏和代码展开情况下层叠在一起*/
+.syntaxhighlighter div.toolbar {
+    border: none !important;
+    position: static !important;
+    right: unset !important;
+    padding: 2px 0px 1px 0px!important;
+    font-size: 13px !important;
+    color: #3f5fbf !important;
+    width: 100% !important;
+    height: 18px!important;
+}
+
+.syntaxhighlighter.collapsed div.toolbar {
+    border: none !important;
+    position: static !important;
+    right: unset !important;
+    padding: 2px 0px 1px 0px!important;
+    font-size: 13px !important;
+    color: #3f5fbf !important;
+    width: 100% !important;
+    height: 18px!important;
+}
+
+.syntaxhighlighter.java div.toolbar {
+    background-color: #f5f5f5 !important;
+}
+
+/**
+使工具栏按钮图片和文字之间无间隔
+ */
+.syntaxhighlighter.collapsed .toolbar span {
+    margin-right: 0px !important;
+}
+
+.syntaxhighlighter .toolbar a {
+    width: 11px !important;
+    text-decoration: none;
+}
+
+.toolbar a.toolbar-item {
+    display: inline!important;
+    color: #3f5fbf !important;
+}
+
+.syntaxhighlighter div.toolbar a.toolbar-item:hover {
+    color: rgb(170, 119, 0) !important;
+}
+
+
+.toolbar a.toolbar-item.copy-source{
+    display: inline!important;
+    color: #3f5fbf !important;
+    margin: auto!important;
+    right: unset!important;
+    left: unset!important;
+}
+
+.syntaxhighlighter .toolbar .row .col-md-1 .copy-source{
+    float:unset!important;
+    display: block!important;
+}
+
+.toolbar a.toolbar-item.open-code{
+    display: inline!important;
+    color: #3f5fbf !important;
+    margin-left: 0px!important;
+    right: unset!important;
+    left: unset!important;
+    padding-top: 0px!important;
+    padding-left: 5px!important;
+}
+.syntaxhighlighter .toolbar .row .col-md-1 .open-code{
+    float:unset!important;
+    display: block!important;
+}
+
+.syntaxhighlighter .toolbar .row .col-md-offset-9{
+    margin-left: 83.33333333%!important;
+}
+
+
+

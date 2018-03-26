@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uncub.blog.dao.CustomUserMapper">
+  <select id="queryRoleByUserId" parameterType="java.lang.Integer" resultType="com.uncub.blog.dto.base.Role">
+      select DISTINCT b.* FROM t_user_role a,t_role b
+      WHERE a.role_id=b.id
+      and a.user_id=#{id}
+  </select>
+
+    <select id="queryPermissionByUserId" parameterType="java.lang.Integer" resultMap="ResourcePermissionMap">
+        select DISTINCT a.role_id,
+         c.resource_id,
+         d.resource_name,
+         d.resource_path,
+         d.resource_desc,
+         d.resource_type,
+         c.permission
+         FROM t_user_role a,t_role b,t_role_resource c,t_resource d
+        WHERE a.role_id=b.id
+        and a.user_id=#{id}
+    </select>
+
+    <resultMap id="ResourcePermissionMap" type="com.uncub.blog.dto.ResourcePermission">
+        <id column="role_id" jdbcType="INTEGER" property="roleId" />
+        <result column="resource_id" jdbcType="INTEGER" property="resourceId" />
+        <result column="resource_name" jdbcType="VARCHAR" property="resourceName" />
+        <result column="resource_path" jdbcType="VARCHAR" property="resourcePath" />
+        <result column="resource_desc" jdbcType="VARCHAR" property="resourceDesc" />
+        <result column="resource_type" jdbcType="VARCHAR" property="resourceType" />
+        <result column="permission" jdbcType="VARCHAR" property="permission" />
+    </resultMap>
+
+
+
+
+
+</mapper>
