@@ -61,6 +61,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.logback-extensions:logback-ext-spring:0.1.5" />
         </element>
       </element>
     </root>
