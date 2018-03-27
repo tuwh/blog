@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar-static-top">
+    <div class="container">
+        <a class="navbar-brand" href="http://www.baidu.com">首页</a>
+        <a class="navbar-brand" href="#">博客</a>
+        <a class="navbar-brand" href="#">问答</a>
+        <a class="navbar-brand" href="#">相册</a>
+        <a class="navbar-brand" href="#">头条</a>
+        <a class="navbar-brand" href="#">活动</a>
+        <a class="navbar-brand" href="#">论坛</a>
+        <!--<a class="navbar-brand navbar-right">搜索</a>-->
+        <div class="navbar-form navbar-right">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="搜索">
+                <span class="input-group-btn">
+                    <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div id="title" class="col-md-2">
+        <div class="list-group">
+            <a class="list-group-item " href="#">java</a>
+            <a class="list-group-item " href="#">html</a>
+            <a class="list-group-item " href="#">linix</a>
+            <a class="list-group-item" title="oracle" href="#">oracle</a>
+            <a class="list-group-item" title="mysql" href="#">mysql</a>
+            <a class="list-group-item " href="#">运维</a>
+            <a class="list-group-item text-overflow" title="架构" href="#">架构</a>
+            <a class="list-group-item text-overflow" title="安全" href="#">安全</a>
+            <a class="list-group-item text-overflow" title="前端" href="#">前端</a>
+            <a class="list-group-item text-overflow" title="情感" href="#">情感</a>
+            <a class="list-group-item text-overflow" title="需求" href="#">需求</a>
+            <a class="list-group-item text-overflow" title="管理" href="#">管理</a>
+            <a class="list-group-item text-overflow" title="其他" href="#">其他</a>
+        </div>
+    </div>
+    <div id="content_detail" class="col-md-8">
+            <pre>
+                public class Uncub{
+                     public Uncub(){
+                        SystemOut.out.printf("Hellow word!");
+                     }
+                }
+            </pre>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+
+            <li class="list-group-item">
+                <a href="#"><h4>华为进不了美国，并不是贸易保护使然</h4></a>
+                <a href="#">资讯</a>
+            </li>
+
+        </ul>
+
+
+
+    </div>
+    <div id="content_topics" class="col-md-2 content_topics">
+        <ul class="list-group">
+            <li class="list-group-item topic-head topic-red" >
+                今日推荐
+            </li>
+            <a class="list-group-item topic-content" href="#">
+                <div class="row">
+                    <div class="col-md-4  topic-picture-warp">
+                        <div class="thumbnail topic-picture-warp1">
+                            <img class="topic-picture-imag" src="pic/news1.png" alt="图片">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        华为进不了美国，并不是贸易控制
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item topic-content" href="#">
+                <div class="row">
+                    <div class="col-md-4  topic-picture-warp">
+                        <div class="thumbnail topic-picture-warp1">
+                            <img class="topic-picture-imag" src="pic/news2.png" alt="图片">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        华为进不了美国，并不是贸易控制
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item topic-content" href="#">
+                <div class="row">
+                    <div class="col-md-4  topic-picture-warp">
+                        <div class="thumbnail topic-picture-warp1">
+                            <img class="topic-picture-imag" src="pic/news2.png" alt="图片">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        华为进不了美国，并不是贸易控制
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item topic-content" href="#">
+                <div class="row">
+                    <div class="col-md-4  topic-picture-warp">
+                        <div class="thumbnail topic-picture-warp1">
+                            <img class="topic-picture-imag" src="pic/news2.png" alt="图片">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        华为进不了美国，并不是贸易控制
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item topic-content" href="#">
+                <div class="row">
+                    <div class="col-md-4  topic-picture-warp">
+                        <div class="thumbnail topic-picture-warp1">
+                            <img class="topic-picture-imag" src="pic/news2.png" alt="图片">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        华为进不了美国，并不是贸易控制
+                    </div>
+                </div>
+            </a>
+        </ul>
+    </div>
+</div>
+
+
+
+</body>
+</html>

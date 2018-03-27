@@ -62,6 +62,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.logback-extensions:logback-ext-spring:0.1.5" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.12" />
+          <element id="library" level="project" name="Maven: org.apache.velocity:velocity-tools:2.0" />
         </element>
       </element>
     </root>
