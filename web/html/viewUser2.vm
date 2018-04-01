@@ -1,4 +1,4 @@
-$!{user1.userName}
+$!{user.userName}
 <br>
-${user1.userName}
+${user.userName}
 

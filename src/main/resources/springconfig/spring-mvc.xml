@@ -64,6 +64,8 @@
         <property name="suffix" value=".jsp"/>
     </bean>-->
 
+    
+
     <!-- 这个类用于Spring MVC视图解析 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 

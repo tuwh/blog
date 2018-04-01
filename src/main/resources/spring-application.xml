@@ -8,6 +8,5 @@
     </context:component-scan>
     <import resource="springconfig/spring-mybatis.xml"/>
     <import resource="springconfig/spring-shiro.xml"/>
-    <!--<import resource="springconfig/spring-web-shiro.xml"/>-->
 
 </beans>

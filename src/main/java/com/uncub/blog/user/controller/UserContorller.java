@@ -49,7 +49,7 @@ public class UserContorller {
     }
 
     @RequestMapping("/viewUser1")
-    @RequiresRoles("view")
+    @RequiresRoles("cust")
     public String viewUser1(@NotNull User user) {
         User user1 = userServic.queryUser(user).get(0);
         BeanUtils.copyProperties(user1, user);
