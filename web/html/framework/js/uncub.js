@@ -1,21 +1,20 @@
-$.extend({
-    highlighterCode: function (orgCode, language) {
-        if (!orgCode) return '';
-        orgCode = orgCode.replace(/</g, '&lt;');
-        return $.highlighter.highlighterCode(orgCode, language);
-    },
-    highlighterElem: function (orgCode, language) {
-        if (!orgCode) return '';
-        orgCode = orgCode.replace(/</g, '&lt;');
-        return $.highlighter.highlighterElem(orgCode, language);
-    },
-    highlighter: SyntaxHighlighter,
-    consolelog: function (msg) {
-        if (console) {
-            console.log(msg)
-        }
-    }
-});
++function(){
+    if (typeof SyntaxHighlighter != "function") return;
+    $.extend({
+        highlighterCode: function (orgCode, language) {
+            if (!orgCode) return '';
+            orgCode = orgCode.replace(/</g, '&lt;');
+            return $.highlighter.highlighterCode(orgCode, language);
+        },
+        highlighterElem: function (orgCode, language) {
+            if (!orgCode) return '';
+            orgCode = orgCode.replace(/</g, '&lt;');
+            return $.highlighter.highlighterElem(orgCode, language);
+        },
+        highlighter: SyntaxHighlighter
+    });
+}(jQuery);
+
 
 -function ($) {
     if (!$.fn.modal) {
@@ -259,8 +258,32 @@ $.extend({
             $('body').find(target).remove();
         });
     }
+}(jQuery);
 
-
++function ($) {
+    /**
+     * 将对象屏幕居中显示
+     */
+    $.fn.adjustCenter = function(elememt)
+    {
+        if (!elememt) elememt = this;
+        var _hight = $(window).height();
+        var _formHeight = $(elememt).height();
+        if (_hight > _formHeight) {
+            this.css('margin-top', (_hight - _formHeight) / 2);
+            return true;
+        }
+        return false;
+    };
+    /**
+     * 控制台打印日志，ie6及以下不报错
+     * @param msg
+     */
+    $.fn.consolelog = function (msg) {
+        if (console) {
+            console.log(msg)
+        }
+    }
 }(jQuery);
 
 
