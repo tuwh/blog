@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="framework/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="framework/bootstrap-3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="framework/css/common.css">
+    <script src="framework/js/jquery-1.9.1/jquery.min.js"></script>
+    <script src="framework/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form class="form-control" id="logForm" action="user/login">
+        <label>用户名</label><input name="userNo">
+        <label>密码</label><input name="password">
+        <button id="submit">提交</button>
+    </form>
+
+    <script type="application/javascript">
+        $('#logForm').submit();
+    </script>
+
+</body>
+</html>

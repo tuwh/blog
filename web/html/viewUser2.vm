@@ -1,2 +1,4 @@
-$user.userNo
-$user
+$!{user1.userName}
+<br>
+${user1.userName}
+

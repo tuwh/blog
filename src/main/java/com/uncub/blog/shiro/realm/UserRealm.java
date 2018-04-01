@@ -1,7 +1,9 @@
 package com.uncub.blog.shiro.realm;
 
+import com.uncub.blog.common.exception.ServiceException;
 import com.uncub.blog.dto.base.User;
 import com.uncub.blog.user.service.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -32,6 +34,7 @@ public class UserRealm extends AuthorizingRealm {
 
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String userNo = (String) token.getPrincipal();
+        if (StringUtils.isBlank(userNo)) throw new ServiceException("请输入用户名密码！");
         User userQueryBean = new User();
         userQueryBean.setUserNo(userNo);
         List<User> users = userService.queryUser(userQueryBean);

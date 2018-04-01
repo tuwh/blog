@@ -3,6 +3,11 @@ package com.uncub.blog.user.controller;
 import com.sun.istack.internal.NotNull;
 import com.uncub.blog.dto.base.User;
 import com.uncub.blog.user.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,13 +49,42 @@ public class UserContorller {
     }
 
     @RequestMapping("/viewUser1")
-    public String viewUser1(@NotNull User user, Model model) {
-        user = userServic.queryUser(user).get(0);
-        Map map = new HashMap();
-        map.put("user",user);
-        model.addAllAttributes(map);
+    @RequiresRoles("view")
+    public String viewUser1(@NotNull User user) {
+        User user1 = userServic.queryUser(user).get(0);
+        BeanUtils.copyProperties(user1, user);
         return "/viewUser2";
     }
 
+    @RequestMapping("/viewUserWithModel")
+    public ModelAndView viewUserWithModel(@NotNull User user) {
+        User user1 = userServic.queryUser(user).get(0);
+        return new ModelAndView("/viewUser2", "user1", user1);
+    }
+
+    /*@RequestMapping("/login")
+    public String login(User user){
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserNo(), user.getPassword());
+        subject.login(token);
+        return "redirect:/index.html";
+    }*/
+
+    @RequestMapping("/login")
+    public ModelAndView login(User user){
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserNo(), user.getPassword());
+        subject.login(token);
+        return new ModelAndView("redirect:/index.html", "user1", user);
+//        return "redirect:/index.html";
+    }
+
+    @RequestMapping("/loginWithAjax")
+    public User loginWithAjax(User user){
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserNo(), user.getPassword());
+        subject.login(token);
+        return user;
+    }
 
 }

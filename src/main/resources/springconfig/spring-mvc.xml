@@ -2,15 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 开启SpringMVC注解模式 -->
     <!--简化配置
         (1)自动注册DefaultannotationHandlerMapping,AnnotationMethodhandlerAdapter
         (2)默认提供了一系列的功能:数据绑定,数字和日期的转换format @NumberFormat,@DataTimeFormat,xml,json的读写支持
     -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
 
     <!-- servlet-mapping 映射路径:"/" -->
     <!-- 静态资源默认Servlet配置
@@ -21,14 +21,13 @@
 
 
     <!-- ①：对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
-    <context:component-scan base-package="com.uncub.blog" />
+    <context:component-scan base-package="com.uncub.blog"/>
 
     <!-- 这两个类用来启动基于Spring MVC的注解功能，将控制器与方法映射加入到容器中 -->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
-    <!-- 这个类用于Spring MVC视图解析 -->
-    <!--<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>-->
+
 
     <!-- velocity环境配置 -->
     <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
@@ -43,12 +42,19 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
         <property name="cache" value="true"/>
         <property name="suffix" value=".vm"/>
-        <property name="exposeSpringMacroHelpers" value="true" /><!--是否使用spring对宏定义的支持-->
-        <property name="exposeSessionAttributes" value="true" /><!--是否开放request属性-->
+        <property name="exposeSpringMacroHelpers" value="true"/><!--是否使用spring对宏定义的支持-->
+        <property name="exposeSessionAttributes" value="true"/><!--是否开放request属性-->
         <property name="requestContextAttribute" value="request"/><!--request属性引用名称-->
         <property name="dateToolAttribute" value="dateTool"/>
         <property name="numberToolAttribute" value="numberTool"/>
     </bean>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <aop:config proxy-target-class="true"/>
+
 
     <!--jsp视图解析器-->
     <!--<bean id="jspViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -57,5 +63,8 @@
         <property name="prefix" value="/page/"/>
         <property name="suffix" value=".jsp"/>
     </bean>-->
+
+    <!-- 这个类用于Spring MVC视图解析 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 
 </beans>
