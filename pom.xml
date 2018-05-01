@@ -63,9 +63,33 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-instrument</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>zookeeper</artifactId>
             <version>3.3.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+            </exclusions>
             <optional>false</optional>
         </dependency>
 
@@ -195,6 +219,28 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-tools</artifactId>
             <version>2.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>struts-taglib</artifactId>
+                    <groupId>org.apache.struts</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>struts-tiles</artifactId>
+                    <groupId>org.apache.struts</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>struts-core</artifactId>
+                    <groupId>org.apache.struts</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>oro</artifactId>
+                    <groupId>oro</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>sslext</artifactId>
+                    <groupId>sslext</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -216,13 +262,45 @@
         </dependency>
 
         <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.7.7.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.6</version>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
         </dependency>
 
-
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>jdk17</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.7</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.7</maven.compiler.source>
+                <maven.compiler.target>1.7</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>

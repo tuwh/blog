@@ -51,6 +51,7 @@ public class UserContorller {
     @RequestMapping("/viewUser1")
     @RequiresRoles("cust")
     public String viewUser1(@NotNull User user) {
+        user.setUserNo("tuwh");
         User user1 = userServic.queryUser(user).get(0);
         BeanUtils.copyProperties(user1, user);
         return "/viewUser2";
@@ -71,9 +72,10 @@ public class UserContorller {
     }*/
 
     @RequestMapping("/login")
-    public ModelAndView login(User user){
+    public ModelAndView login(User user, boolean rememberMe){
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUserNo(), user.getPassword());
+        token.setRememberMe(rememberMe);
         subject.login(token);
         return new ModelAndView("redirect:/index.html", "user1", user);
 //        return "redirect:/index.html";
@@ -85,6 +87,16 @@ public class UserContorller {
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUserNo(), user.getPassword());
         subject.login(token);
         return user;
+    }
+
+    @RequestMapping("/logout")
+    public ModelAndView logout(User user, boolean rememberMe){
+        Subject subject = SecurityUtils.getSubject();
+        /*UsernamePasswordToken token = new UsernamePasswordToken(user.getUserNo(), user.getPassword());
+        token.setRememberMe(rememberMe);*/
+        subject.logout();
+        return new ModelAndView("redirect:/index.html", "user1", user);
+//        return "redirect:/index.html";
     }
 
 }

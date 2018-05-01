@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>身份校验异常</title>
+</head>
+<body>
+    <div>
+        <label>错误信息：</label>
+        <p class="danger">$!{ex.message}</p>
+    </div>
+</body>
+</html>

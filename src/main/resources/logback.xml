@@ -155,7 +155,13 @@
         <appender-ref ref="ASYNC"/>
     </root>
 
-    <logger name="org.springframework" level="debug" additivity="false">
+    <logger name="org.springframework" level="info" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.apache.shiro" level="info" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.apache.velocity" level="error" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 </configuration>

@@ -1,6 +1,8 @@
 package com.uncub.blog.dto.base;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     /**
     * 主键(自增长)
     */

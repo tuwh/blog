@@ -6,20 +6,17 @@ import com.uncub.blog.condition.UserRoleConditions;
 import com.uncub.blog.dao.CustomUserMapper;
 import com.uncub.blog.dao.base.UserMapper;
 import com.uncub.blog.dao.base.UserRoleMapper;
-
 import com.uncub.blog.dto.ResourcePermission;
 import com.uncub.blog.dto.base.Role;
-import com.uncub.blog.dto.base.RoleResource;
 import com.uncub.blog.dto.base.User;
 import com.uncub.blog.dto.base.UserRole;
-import org.apache.velocity.runtime.parser.node.MathUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Service("userService")
 public class UserService {
@@ -58,6 +55,7 @@ public class UserService {
     /**
      * 根据所有不为空条件进行查询，不分页
      */
+    @Cacheable(value = "user", key = "#user.userNo")
     public List<User> queryUser(User user) {
         return userMapper.queryUser(user);
     }
@@ -72,6 +70,7 @@ public class UserService {
         return customUserMapper.queryRoleByUserId(userId);
     }
 
+    @Cacheable(value = "user", key = "\"user\" + #userId")
     public Set<String> getEffictiveRolesByUserId(Integer userId) {
         UserRoleConditions userRoleConditions = new UserRoleConditions();
         userRoleConditions.createCriteria().andUserIdEqualTo(userId)
@@ -98,12 +97,11 @@ public class UserService {
     public void addUser(User user) {
         if (checkUserExists(user)) throw new ServiceException("用户已存在！");
         user.setSalt(Math.random() * 10000 / 1 + "");
-        user.setPassword(MD5Utils.getMD5(user.getPassword() + user.getUserNo() + user.getSalt(),2));
+        user.setPassword(MD5Utils.getMD5(user.getPassword() + user.getUserNo() + user.getSalt(), 2));
         userMapper.insertSelective(user);
     }
 
     public boolean checkUserExists(User user) {
-        //todo
         return false;
     }
 }

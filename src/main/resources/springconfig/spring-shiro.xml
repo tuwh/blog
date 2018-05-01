@@ -18,8 +18,7 @@
     </bean>
 
     <!-- 会话ID生成器 -->
-    <bean id="sessionIdGenerator"
-          class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
+    <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
     <!-- 会话DAO -->
     <bean id="sessionDAO"
           class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
@@ -49,6 +48,21 @@
         <property name="httpOnly" value="true"/>
         <property name="maxAge" value="180000"/>
     </bean>
+
+    <!-- rememberMe模版 -->
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="2592000"/><!-- 30天 -->
+    </bean>
+
+    <!-- rememberMe管理器 -->
+    <bean id="rememberMeManager"
+          class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+
     <!-- 会话管理器 -->
     <bean id="sessionManager"
           class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
@@ -64,41 +78,60 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="userRealm"/>
         <property name="sessionManager" ref="sessionManager"/>
+        <property name="rememberMeManager" ref="rememberMeManager"/>
     </bean>
-
 
     <!-- Shiro 的 Web 过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login.vm"/>
         <property name="successUrl" value="/index.html"/>
-        <property name="filters">
+    </bean>
+
+    <bean id="uncubFilterChainManager" class="com.uncub.blog.common.shiro.UncubFilterChainManager" init-method="init">
+        <!--<property name="extFilters">
+            <description>自定义filter过滤配置</description>
             <util:map>
-                <entry key="suffixFilter" value-ref="suffixFilter"/>
+                <entry key="" value-ref=""/>
+            </util:map>
+        </property>-->
+        <property name="filterChainDefinitionMap">
+            <util:map>
+                <entry key="/**" value="user"/>
             </util:map>
         </property>
-        <property name="filterChainDefinitions">
-            <value>
-                /login.vm = authc
-                /logout = logout
-                /authenticated.jsp = authc
-                /index.html = anon
-                /framework/* = anon
-                /* = user
-            </value>
+        <property name="loginUrl" value="/login.vm"/>
+        <property name="successUrl" value="/index.vm"/>
+    </bean>
+
+    <bean id="uncubPathMatchingFilterChainResolver" class="com.uncub.blog.common.shiro.UncubPathMatchingFilterChainResolver">
+        <property name="filterChainManager" ref="uncubFilterChainManager"/>
+        <property name="unFilterSuffix">
+            <util:set>
+                <value>.js</value>
+                <value>.html</value>
+                <value>.htm</value>
+                <value>.txt</value>
+                <value>.css</value>
+                <value>.png</value>
+                <value>.jpg</value>
+                <value>.gif</value>
+                <value>.svg</value>
+                <value>.eot</value>
+                <value>.ttf</value>
+                <value>.woff</value>
+                <value>.woff2</value>
+            </util:set>
         </property>
     </bean>
 
-    <!-- 基于 Form 表单的身份验证过滤器 -->
-    <bean id="formAuthenticationFilter"
-          class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
-        <property name="usernameParam" value="username"/>
-        <property name="passwordParam" value="password"/>
-        <property name="loginUrl" value="/login.jsp"/>
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" depends-on="shiroFilter">
+        <property name="targetObject" ref="shiroFilter"/>
+        <property name="targetMethod" value="setFilterChainResolver"/>
+        <property name="arguments" ref="uncubPathMatchingFilterChainResolver"/>
     </bean>
 
-    <bean id="suffixFilter" class="com.uncub.blog.common.filter.SuffixFilter">
-        <property name="passSuffix" value=".css,.js,.html,.png,.jpg,.htm"/>
-    </bean>
+
+
 
 </beans>
