@@ -164,4 +164,10 @@
     <logger name="org.apache.velocity" level="error" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
+    <logger name="org.apache.zookeeper" level="error" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="org.apache.curator" level="error" additivity="false">
+        <appender-ref ref="ERROR" />
+    </logger>
 </configuration>

@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @RunWith(SpringJUnit4ClassRunner.class) //使用junit4进行测试
 @ContextConfiguration(locations={"classpath:spring-application.xml"}) //加载配置文件
 public class TestUser {
@@ -29,8 +32,16 @@ public class TestUser {
 
     @Test
     public void test(){
-        userService.queryUser(new User());
-        userService.queryUser(new User());
+        /*userService.queryUser(new User());
+        userService.queryUser(new User());*/
+
+        String machineName = null;
+        try {
+            machineName = InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        System.out.println(machineName);
     }
 
     @Test
