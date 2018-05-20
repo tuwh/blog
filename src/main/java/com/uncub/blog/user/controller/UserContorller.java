@@ -1,6 +1,5 @@
 package com.uncub.blog.user.controller;
 
-import com.sun.istack.internal.NotNull;
 import com.uncub.blog.dto.base.User;
 import com.uncub.blog.user.service.UserService;
 import org.apache.shiro.SecurityUtils;
@@ -10,15 +9,12 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
+import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/user")
 @Controller
