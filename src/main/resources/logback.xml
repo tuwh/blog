@@ -170,4 +170,8 @@
     <logger name="org.apache.curator" level="error" additivity="false">
         <appender-ref ref="ERROR" />
     </logger>
+    <logger name="org.apache.activemq" level="error" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
 </configuration>
