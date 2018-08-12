@@ -360,6 +360,14 @@
             <version>2.4.3</version>
         </dependency>
 
+        <!-- 热部署功能 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <version>1.2.0.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <profiles>

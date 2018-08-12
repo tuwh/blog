@@ -1,4 +1,4 @@
-package com.uncub.blog.common.dao;
+package com.uncub.framework.dao;
 
 import org.apache.ibatis.session.RowBounds;
 

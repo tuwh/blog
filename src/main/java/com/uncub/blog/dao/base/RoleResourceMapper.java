@@ -1,6 +1,6 @@
 package com.uncub.blog.dao.base;
 
-import com.uncub.blog.common.dao.Pagination;
+import com.uncub.framework.dao.Pagination;
 import com.uncub.blog.condition.RoleResourceConditions;
 import com.uncub.blog.dto.base.RoleResource;
 import java.util.List;

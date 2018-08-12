@@ -64,7 +64,7 @@
         <property name="mapperLocations" value="classpath:mybatis/mapper/**/*.xml"/>
         <!-- 增加轻量级分页插件 -->
         <property name="plugins">
-            <bean class="com.uncub.blog.common.dao.PageHelper"></bean>
+            <bean class="com.uncub.framework.dao.PageHelper"></bean>
         </property>
     </bean>
 
@@ -82,4 +82,7 @@
     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
+
+
+
 </beans>

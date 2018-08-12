@@ -168,5 +168,6 @@
     <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-filtering:1.0-beta-4" level="project" />
     <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-interpolation:1.13" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.springframework:springloaded:1.2.0.RELEASE" level="project" />
   </component>
 </module>
